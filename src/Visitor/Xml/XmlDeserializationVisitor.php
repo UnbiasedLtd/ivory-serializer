@@ -57,7 +57,7 @@ class XmlDeserializationVisitor extends AbstractDeserializationVisitor
     protected function decode($data)
     {
         $internalErrors = libxml_use_internal_errors();
-        $disableEntityLoader = libxml_disable_entity_loader();
+        $disableEntityLoader = true;
 
         $this->setLibXmlState(true, true);
         $document = simplexml_load_string($data);
@@ -243,7 +243,6 @@ class XmlDeserializationVisitor extends AbstractDeserializationVisitor
     private function setLibXmlState($internalErrors, $disableEntities)
     {
         libxml_use_internal_errors($internalErrors);
-        libxml_disable_entity_loader($disableEntities);
         libxml_clear_errors();
     }
 }

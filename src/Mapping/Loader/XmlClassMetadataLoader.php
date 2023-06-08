@@ -173,7 +173,7 @@ class XmlClassMetadataLoader extends AbstractFileClassMetadataLoader
         }
 
         $internalErrors = libxml_use_internal_errors();
-        $disableEntities = libxml_disable_entity_loader();
+        $disableEntities = true;
 
         $this->setLibXmlState(true, true);
 
@@ -235,7 +235,6 @@ class XmlClassMetadataLoader extends AbstractFileClassMetadataLoader
     private function setLibXmlState($internalErrors, $disableEntities)
     {
         libxml_use_internal_errors($internalErrors);
-        libxml_disable_entity_loader($disableEntities);
         libxml_clear_errors();
     }
 }
